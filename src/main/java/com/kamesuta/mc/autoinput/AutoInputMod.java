@@ -1,5 +1,6 @@
 package com.kamesuta.mc.autoinput;
 
+import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -8,6 +9,7 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
+import net.minecraft.client.settings.KeyBinding;
 
 @Mod(modid = Reference.MODID, name = Reference.NAME, version = Reference.VERSION)
 public class AutoInputMod {
@@ -19,7 +21,9 @@ public class AutoInputMod {
 
 	@EventHandler
 	public void perInit(FMLPreInitializationEvent event) {
-
+		for (KeyBinding keyBinding : InputHandler.KEY_BINDINGS) {
+			ClientRegistry.registerKeyBinding(keyBinding);
+		}
 	}
 
 	@EventHandler

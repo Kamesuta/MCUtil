@@ -26,10 +26,11 @@ public class ClientTickHandler {
 
 	@SubscribeEvent
 	public void onClientTick(TickEvent.ClientTickEvent event) {
-		if (event.phase == TickEvent.Phase.END) {
+		if (event.phase == TickEvent.Phase.START) {
 			this.minecraft.mcProfiler.startSection("autoclick");
-			if (enableclick)
-				KeyBinding.onTick(1 - 100);
+//			if (this.minecraft.currentScreen == null || this.minecraft.currentScreen.allowUserInput)
+				if (enableclick)
+					KeyBinding.onTick(1 - 100);
 			this.minecraft.mcProfiler.endSection();
 		}
 	}
