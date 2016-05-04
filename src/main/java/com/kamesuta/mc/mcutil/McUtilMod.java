@@ -1,4 +1,4 @@
-package com.kamesuta.mc.autoinput;
+package com.kamesuta.mc.mcutil;
 
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -10,35 +10,37 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import net.minecraft.client.settings.KeyBinding;
+import net.minecraftforge.common.MinecraftForge;
 
 @Mod(modid = Reference.MODID, name = Reference.NAME, version = Reference.VERSION)
-public class AutoInputMod {
+public class McUtilMod {
 	@Instance(Reference.MODID)
-	public static AutoInputMod instance;
+	public static McUtilMod instance;
 
 	// レンダーIDの取得
 	public static int RenderID;
 
 	@EventHandler
-	public void perInit(FMLPreInitializationEvent event) {
-		for (KeyBinding keyBinding : InputHandler.KEY_BINDINGS) {
+	public void perInit(final FMLPreInitializationEvent event) {
+		for (final KeyBinding keyBinding : InputHandler.KEY_BINDINGS) {
 			ClientRegistry.registerKeyBinding(keyBinding);
 		}
 	}
 
 	@EventHandler
-	public void init(FMLInitializationEvent event) {
+	public void init(final FMLInitializationEvent event) {
 		FMLCommonHandler.instance().bus().register(InputHandler.INSTANCE);
 		FMLCommonHandler.instance().bus().register(ClientTickHandler.INSTANCE);
+		MinecraftForge.EVENT_BUS.register(ChatEventHandler.INSTANCE);
 	}
 
 	@EventHandler
-	public void postInit(FMLPostInitializationEvent event) {
+	public void postInit(final FMLPostInitializationEvent event) {
 
 	}
 
 	@EventHandler
-	public void serverStarting(FMLServerStartingEvent event) {
+	public void serverStarting(final FMLServerStartingEvent event) {
 
 	}
 }

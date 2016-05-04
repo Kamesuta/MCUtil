@@ -18,8 +18,8 @@ buildscript {
 apply plugin: 'forge'
 
 version = "1.0"
-group= "com.kamesuta.mc.autoinput" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "AutoInput"
+group= "com.kamesuta.mc.mcutil" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = "McUtil"
 
 minecraft {
     version = "1.7.10-10.13.4.1558-1.7.10"

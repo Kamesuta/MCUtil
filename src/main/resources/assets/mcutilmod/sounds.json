@@ -1,0 +1,18 @@
+{
+    "sound_chat":
+    {
+        "category": "player",
+        "sounds":
+        [
+            "soundChat"
+        ]
+    },
+    "sound_complete":
+    {
+        "category": "player",
+        "sounds":
+        [
+            "soundComplete"
+        ]
+    }
+}
