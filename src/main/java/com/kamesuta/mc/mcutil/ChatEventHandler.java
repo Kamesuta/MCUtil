@@ -9,16 +9,18 @@ import net.minecraftforge.client.event.ClientChatReceivedEvent;
 public class ChatEventHandler {
 	public static final ChatEventHandler INSTANCE = new ChatEventHandler();
 
+	private final Minecraft minecraft = Minecraft.getMinecraft();
+
 	private ChatEventHandler() {}
 
 	@SubscribeEvent
 	public void onClientChatReceivedEvent(final ClientChatReceivedEvent event) {
 		final String message = event.message.getFormattedText();
 
-		final boolean msg = message.startsWith("\u00a707") && message.contains("whispers");
+		final boolean msg = message.startsWith("\u00a77") && message.contains("whispers");
 		final boolean global = message.startsWith("<");
 		if (msg || global) {
-			Minecraft.getMinecraft().getSoundHandler().playSound(PositionedSoundRecord
+			this.minecraft.getSoundHandler().playSound(PositionedSoundRecord
 					.func_147673_a(new ResourceLocation(Reference.MODID.toLowerCase() + ":sound_chat")));
 		}
 	}
