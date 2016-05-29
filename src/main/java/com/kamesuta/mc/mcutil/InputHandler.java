@@ -13,17 +13,17 @@ public class InputHandler {
 
 	private final Action screenshotaction = new Action();
 
-	private static final KeyBinding KEY_BINDING_GUI = new KeyBinding("mcutilmod.key.gui", Keyboard.KEY_O,
+	private static final KeyBinding KEY_BINDING_SCREENSHOT = new KeyBinding("mcutilmod.key.screenshot", Keyboard.KEY_O,
 			"mcutil.key.category");
 
-	public static final KeyBinding[] KEY_BINDINGS = new KeyBinding[] { KEY_BINDING_GUI };
+	public static final KeyBinding[] KEY_BINDINGS = new KeyBinding[] { KEY_BINDING_SCREENSHOT };
 
 	private InputHandler() {
 	}
 
 	@SubscribeEvent
 	public void onKeyInput(final InputEvent event) {
-		if (KEY_BINDING_GUI.isPressed()) {
+		if (KEY_BINDING_SCREENSHOT.isPressed()) {
 			this.screenshotaction.screenShot();
 		}
 	}
