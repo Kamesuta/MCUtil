@@ -1,5 +1,9 @@
 package com.kamesuta.mc.mcutil;
 
+import java.util.regex.Pattern;
+
+import org.lwjgl.opengl.Display;
+
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.PositionedSoundRecord;
@@ -10,6 +14,7 @@ public class ChatEventHandler {
 	public static final ChatEventHandler INSTANCE = new ChatEventHandler();
 
 	private final Minecraft minecraft = Minecraft.getMinecraft();
+	Pattern p = Pattern.compile("\u00a7.");
 
 	private ChatEventHandler() {}
 
@@ -22,6 +27,8 @@ public class ChatEventHandler {
 		if (msg || global) {
 			this.minecraft.getSoundHandler().playSound(PositionedSoundRecord
 					.func_147673_a(new ResourceLocation(Reference.MODID.toLowerCase() + ":sound_chat")));
+			if (ConfigurationHandler.mcutilnotice && !Display.isActive())
+				McUtilMod.notice.notice("Minecraft", this.p.matcher(message).replaceAll(""));
 		}
 	}
 }

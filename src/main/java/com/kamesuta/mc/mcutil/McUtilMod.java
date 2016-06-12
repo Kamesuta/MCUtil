@@ -1,5 +1,7 @@
 package com.kamesuta.mc.mcutil;
 
+import com.kamesuta.mc.mcutil.notice.Notice;
+
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
@@ -20,8 +22,15 @@ public class McUtilMod {
 	// レンダーIDの取得
 	public static int RenderID;
 
+	public static final Notice notice = new Notice();
+	public static ConfigurationHandler config;
+
 	@EventHandler
 	public void perInit(final FMLPreInitializationEvent event) {
+		Reference.logger = event.getModLog();
+
+		ConfigurationHandler.init(event.getSuggestedConfigurationFile());
+
 		for (final KeyBinding keyBinding : InputHandler.KEY_BINDINGS) {
 			ClientRegistry.registerKeyBinding(keyBinding);
 		}
@@ -31,6 +40,7 @@ public class McUtilMod {
 	public void init(final FMLInitializationEvent event) {
 		FMLCommonHandler.instance().bus().register(InputHandler.INSTANCE);
 		FMLCommonHandler.instance().bus().register(ClientTickHandler.INSTANCE);
+		FMLCommonHandler.instance().bus().register(ConfigurationHandler.INSTANCE);
 		MinecraftForge.EVENT_BUS.register(ChatEventHandler.INSTANCE);
 	}
 

@@ -47,6 +47,8 @@ public class Action {
 								Action.this.minecraft.ingameGUI.getChatGUI().printChatMessageWithOptionalDeletion(new ChatComponentText("Uploading Failed."), 114514);
 							}
 						}
+
+
 					} catch (final Exception e) {
 						Action.this.minecraft.ingameGUI.getChatGUI().printChatMessageWithOptionalDeletion(new ChatComponentText("Uploading Failed. " + e.getMessage()), 114514);
 					}
