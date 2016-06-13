@@ -49,6 +49,10 @@ public class ClientTickHandler {
 						setAfk(true);
 					}
 				}
+
+				if (this.minecraft.thePlayer.posY < -15) {
+					spawn();
+				}
 			} else {
 				this.lastctrled = -1;
 				this.isAfk = false;
@@ -60,5 +64,9 @@ public class ClientTickHandler {
 	public void setAfk(final boolean isAfk) {
 		this.isAfk = isAfk;
 		this.minecraft.thePlayer.sendChatMessage(isAfk ? "/me is now AFK." : "/me is no longer AFK.");
+	}
+
+	public void spawn() {
+		this.minecraft.thePlayer.sendChatMessage("/spawn");
 	}
 }
