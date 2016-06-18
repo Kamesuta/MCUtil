@@ -66,7 +66,12 @@ public class ClientTickHandler {
 		this.minecraft.thePlayer.sendChatMessage(isAfk ? "/me is now AFK." : "/me is no longer AFK.");
 	}
 
+	private long spawnspan;
 	public void spawn() {
-		this.minecraft.thePlayer.sendChatMessage("/spawn");
+		final long now = System.currentTimeMillis();
+		if (now - this.spawnspan > 2000) {
+			this.minecraft.thePlayer.sendChatMessage("/spawn");
+			this.spawnspan = now;
+		}
 	}
 }
