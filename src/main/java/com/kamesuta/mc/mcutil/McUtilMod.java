@@ -1,5 +1,6 @@
 package com.kamesuta.mc.mcutil;
 
+import com.kamesuta.mc.mcutil.notice.INotice;
 import com.kamesuta.mc.mcutil.notice.Notice;
 
 import cpw.mods.fml.client.registry.ClientRegistry;
@@ -22,7 +23,7 @@ public class McUtilMod {
 	// レンダーIDの取得
 	public static int RenderID;
 
-	public static final Notice notice = new Notice();
+	public static final INotice notice = new Notice();
 	public static ConfigurationHandler config;
 
 	@EventHandler
