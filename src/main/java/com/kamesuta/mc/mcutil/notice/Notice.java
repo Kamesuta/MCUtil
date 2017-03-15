@@ -21,7 +21,7 @@ import net.minecraft.util.ResourceLocation;
 /**
  * タスクトレイ常駐アプリサンプル
  */
-public class Notice {
+public class Notice implements INotice {
 	private TrayIcon icon;
 
 	/** コンストラクタ */
@@ -56,6 +56,7 @@ public class Notice {
 		}
 	}
 
+	@Override
 	public void notice(final String title, final String message) {
 		if (this.icon != null)
 			this.icon.displayMessage(title, message, MessageType.INFO);
