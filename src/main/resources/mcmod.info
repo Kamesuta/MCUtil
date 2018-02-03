@@ -1,0 +1,25 @@
+{
+	"modListVersion": 2,
+	"modList": [
+		{
+			"modid": "mcutil",
+			"name": "McUtil",
+			"description": "Some extra features",
+			"mcversion": "",
+			"version": "",
+			"authorList": [
+				"Kamesuta"
+			],
+			"credits": "2018 TeamFruit",
+			"dependants": [],
+			"dependencies": ["Forge"],
+			"parent": "",
+			"requiredMods": ["Forge"],
+			"logoFile": "",
+			"screenshots": [],
+			"updateUrl": "https://github.com/Team-Fruit/MCUtil/releases",
+			"url": "https://github.com/Team-Fruit/MCUtil",
+			"useDependencyInformation": false
+		}
+	]
+}

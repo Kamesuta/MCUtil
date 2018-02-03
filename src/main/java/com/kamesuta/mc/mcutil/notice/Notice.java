@@ -13,7 +13,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-import com.kamesuta.mc.mcutil.ConfigurationHandler;
+import com.kamesuta.mc.mcutil.Config;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.ResourceLocation;
@@ -35,13 +35,12 @@ public class Notice implements INotice {
 			// ポップアップメニュー
 			final PopupMenu menu = new PopupMenu();
 			// メニューの例
-			final MenuItem aItem = new MenuItem(ConfigurationHandler.mcutilnotice ? "ON→OFF" : "OFF→ON");
+			final MenuItem aItem = new MenuItem(Config.getConfig().notice.get() ? "ON→OFF" : "OFF→ON");
 			aItem.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(final ActionEvent e) {
-					ConfigurationHandler.propMcUtilNotice.set(!ConfigurationHandler.mcutilnotice);
-					ConfigurationHandler.loadConfiguration();
-					aItem.setLabel(ConfigurationHandler.mcutilnotice ? "ON→OFF" : "OFF→ON");
+					Config.getConfig().notice.set(!Config.getConfig().notice.get());
+					aItem.setLabel(Config.getConfig().notice.get() ? "ON→OFF" : "OFF→ON");
 				}
 			});
 			// メニューにメニューアイテムを追加
@@ -51,14 +50,14 @@ public class Notice implements INotice {
 			SystemTray.getSystemTray().add(ico);
 
 			this.icon = ico;
-		} catch(final IOException e) {
+		} catch (final IOException e) {
 		} catch (final AWTException e) {
 		}
 	}
 
 	@Override
 	public void notice(final String title, final String message) {
-		if (this.icon != null)
+		if (this.icon!=null)
 			this.icon.displayMessage(title, message, MessageType.INFO);
 	}
 }
